@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato — Mãos que Acolhem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #fdf8f2;
+      --warm:    #f5ede0;
+      --terracotta: #c0603a;
+      --terra-light: #e07d58;
+      --terra-dark:  #8c3e22;
+      --sage:    #7a9e87;
+      --ink:     #1e1a17;
+      --muted:   #6b5f55;
+      --border:  #e2d4c8;
+      --shadow:  rgba(30, 26, 23, 0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ─── BACKGROUND TEXTURE ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 10% 20%, rgba(192,96,58,.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 90% 80%, rgba(122,158,135,.10) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: relative;
+      z-index: 10;
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(253,248,242,.85);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: var(--terracotta);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .logo-text span { color: var(--terracotta); display: block; font-size: .75rem; font-weight: 400; letter-spacing: .06em; font-family: 'DM Sans', sans-serif; text-transform: uppercase; }
+
+    nav { display: flex; gap: 2rem; }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .03em;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--terracotta); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 5rem 2rem 3.5rem;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: .78rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      max-width: 600px;
+      margin: 0 auto 1.2rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ─── DECORATIVE LINE ─── */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2.5rem auto;
+      max-width: 300px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .divider-dot {
+      width: 6px; height: 6px;
+      background: var(--terracotta);
+      border-radius: 50%;
+    }
+
+    /* ─── MAIN LAYOUT ─── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* ─── SIDEBAR INFO ─── */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .info-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.8rem;
+      box-shadow: 0 4px 24px var(--shadow);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(192,96,58,.12);
+    }
+
+    .info-card-icon {
+      width: 46px; height: 46px;
+      background: var(--warm);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: .4rem;
+      color: var(--ink);
+    }
+
+    .info-card p, .info-card a {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.6;
+      text-decoration: none;
+    }
+    .info-card a:hover { color: var(--terracotta); }
+
+    .social-links {
+      display: flex;
+      gap: .75rem;
+      margin-top: .75rem;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .45rem .9rem;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .social-btn:hover {
+      border-color: var(--terracotta);
+      color: var(--terracotta);
+      background: rgba(192,96,58,.05);
+    }
+
+    /* ─── FORM PANEL ─── */
+    .form-panel {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.8rem;
+      box-shadow: 0 8px 40px var(--shadow);
+    }
+
+    .form-panel h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+      color: var(--ink);
+    }
+
+    .form-panel > p {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    /* ─── GOOGLE FORM EMBED ─── */
+    .gform-wrapper {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--warm);
+    }
+
+    .gform-wrapper iframe {
+      width: 100%;
+      min-height: 700px;
+      border: none;
+      display: block;
+    }
+
+    /* Placeholder state — shown when no real form URL is set */
+    .gform-placeholder {
+      padding: 3rem 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .gform-placeholder .ph-icon {
+      font-size: 3rem;
+      opacity: .5;
+    }
+
+    .gform-placeholder h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
+
+    .gform-placeholder p {
+      color: var(--muted);
+      font-size: .88rem;
+      max-width: 340px;
+      line-height: 1.6;
+    }
+
+    .gform-placeholder code {
+      background: var(--border);
+      padding: .15em .45em;
+      border-radius: 4px;
+      font-size: .82rem;
+      color: var(--terra-dark);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: .75rem 1.8rem;
+      background: var(--terracotta);
+      color: #fff;
+      border-radius: 99px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: .9rem;
+      transition: background .2s, transform .15s;
+      margin-top: .5rem;
+    }
+    .btn-primary:hover {
+      background: var(--terra-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .83rem;
+    }
+
+    footer a { color: var(--terracotta); text-decoration: none; }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero, .sidebar, .form-panel {
+      animation: fadeUp .6s ease both;
+    }
+    .sidebar { animation-delay: .1s; }
+    .form-panel { animation-delay: .2s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 820px) {
+      main {
+        grid-template-columns: 1fr;
+        padding: 0 1.25rem 4rem;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+
+      nav { gap: 1.25rem; }
+
+      .form-panel { padding: 1.8rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <a class="logo" href="index.html">
+      <div class="logo-icon">🤝</div>
+      <div class="logo-text">
+        Mãos que Acolhem
+        <span>Associação de Apoio</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="projetos.html">Projetos</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <span class="hero-eyebrow">📬 Fale conosco</span>
+    <h1>Vamos <em>conversar</em> e construir juntos</h1>
+    <p>Tem uma dúvida, quer ser voluntário ou conhecer mais sobre nosso trabalho? Estamos aqui para você.</p>
+    <div class="divider"><div class="divider-dot"></div></div>
+  </section>
+
+  <!-- ── MAIN ── -->
+  <main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="info-card">
+        <div class="info-card-icon">📍</div>
+        <h3>Endereço</h3>
+        <p>Rua Exemplo, 123 — Bairro<br>Cidade — SP, Brasil</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">📞</div>
+        <h3>Telefone & E-mail</h3>
+        <p>
+          <a href="tel:+5511900000000">(11) 90000-0000</a><br>
+          <a href="/cdn-cgi/l/email-protection#d4b7bbbaa0b5a0bb94b9b5bba7a5a1b1b5b7bbb8bcb1b9fabba6b3fab6a6"><span class="__cf_email__" data-cfemail="d8bbb7b6acb9acb798b5b9b7aba9adbdb9bbb7b4b0bdb5f6b7aabff6baaa">[email&#160;protected]</span></a>
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">🕐</div>
+        <h3>Horário de Atendimento</h3>
+        <p>Segunda a Sexta<br>das 9h às 17h</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">🌐</div>
+        <h3>Redes Sociais</h3>
+        <p>Acompanhe nosso trabalho:</p>
+        <div class="social-links">
+          <a class="social-btn" href="#" target="_blank" rel="noopener">📸 Instagram</a>
+          <a class="social-btn" href="#" target="_blank" rel="noopener">📘 Facebook</a>
+          <a class="social-btn" href="#" target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- FORM PANEL -->
+    <div class="form-panel">
+      <h2>Envie sua mensagem</h2>
+      <p>Preencha o formulário abaixo e retornaremos em breve. ✨</p>
+
+      <div class="gform-wrapper" id="gform-area">
+        <!--
+          ════════════════════════════════════════════════════════
+          COMO VINCULAR SEU GOOGLE FORMS:
+          1. Crie seu formulário em forms.google.com
+          2. Clique em "Enviar" → ícone de link </>
+          3. Copie o link de incorporação (embed)
+          4. Substitua o conteúdo abaixo pelo <iframe> gerado
+          ════════════════════════════════════════════════════════
+
+          EXEMPLO — substitua pela sua URL real:
+          <iframe
+            src="https://docs.google.com/forms/d/e/SEU_ID_AQUI/viewform?embedded=true"
+            width="100%"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0">
+            Carregando…
+          </iframe>
+        -->
+
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfHxe1I5l0ToAs2nTQdlKzZ2XOa4jIKujYV4MEskty6zAwSiQ/viewform?embedded=true"
+          width="100%"
+          height="750"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0">
+          Carregando…
+        </iframe>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© 2025 Associação Mãos que Acolhem — F
